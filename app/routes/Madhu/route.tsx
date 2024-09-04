@@ -1,7 +1,7 @@
 import "../../styles/styles.css";
 
 const Page = () => {
-  return <></>;
+  return <>Hi</>;
 };
 
 export default Page;
