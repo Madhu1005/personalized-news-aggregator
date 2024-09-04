@@ -17,6 +17,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <div className="bg-blue-950 text-cyan-300 py-4 px-2 flex justify-center">
+          <a href="/Madhu" className="bg-blue-900 my-4 px-2 py-4 hover:bg-yellow-400 hover:text-pink-700">
+            hello boss
+          </a>
+          <div className="bg-blue-900 my-4 px-2 py-4">hello boss</div>
+          <div className="bg-blue-900 my-4 px-2 py-4">hello boss</div>
+          <div className="bg-blue-900 my-4 px-2 py-4">hello boss</div>
+        </div>
         {children}
         <ScrollRestoration />
         <Scripts />
