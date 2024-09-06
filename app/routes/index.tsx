@@ -1,13 +1,4 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
-import "./tailwind.css";
-
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function Index() {
   const featuredArticle = {
     title: "Breaking News: Major Tech Merger Announced",
     description:
@@ -60,59 +51,39 @@ export function Layout({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-       
-        {/* Main News Section */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Header />
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Header />
 
-          {/* Featured Article Section */}
-          {featuredArticle && (
-            <section className="bg-white shadow-lg rounded-lg mb-10 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
-              <img
-                src={featuredArticle.urlToImage}
-                alt={featuredArticle.title}
-                className="object-cover h-64 w-full lg:h-full"
-              />
-              <div className="p-6 flex flex-col justify-between">
-                <h1 className="text-2xl font-bold mb-4">
-                  {featuredArticle.title}
-                </h1>
-                <p className="text-gray-700 mb-4">
-                  {featuredArticle.description}
-                </p>
-                <a
-                  href={featuredArticle.url}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-                >
-                  Read more
-                </a>
-              </div>
-            </section>
-          )}
+      {/* Featured Article Section */}
+      {featuredArticle && (
+        <section className="bg-white shadow-lg rounded-lg mb-10 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+          <img
+            src={featuredArticle.urlToImage}
+            alt={featuredArticle.title}
+            className="object-cover h-64 w-full lg:h-full"
+          />
+          <div className="p-6 flex flex-col justify-between">
+            <h1 className="text-2xl font-bold mb-4">{featuredArticle.title}</h1>
+            <p className="text-gray-700 mb-4">{featuredArticle.description}</p>
+            <a
+              href={featuredArticle.url}
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+            >
+              Read more
+            </a>
+          </div>
+        </section>
+      )}
 
-          {/* Other Articles Grid */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {otherArticles.map((article, index) => (
-              <ArticleCard key={index} article={article} />
-            ))}
-          </section>
+      {/* Other Articles Grid */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {otherArticles.map((article, index) => (
+          <ArticleCard key={index} article={article} />
+        ))}
+      </section>
 
-          <Footer />
-        </main>
-
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
+      <Footer />
+    </main>
   );
 }
 
@@ -156,7 +127,3 @@ const Footer = () => (
     <p>&copy; 2024 News Aggregator. All rights reserved.</p>
   </footer>
 );
-
-export default function App() {
-  return <Outlet />;
-}
